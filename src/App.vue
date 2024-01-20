@@ -1,7 +1,7 @@
 <script setup>
 import Header from "./components/Header.vue";
-import EmptyState from "./components/EmptyState.vue";
-import TextCard from "./components/TextCard.vue";
+// import EmptyState from "./components/EmptyState.vue";
+import TextCard from "./components/TextCard/TextCard.vue";
 </script>
 
 <template>

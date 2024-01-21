@@ -6,8 +6,7 @@
 <style scoped>
 .empty-state {
   text-align: center;
-  background: lightgrey;
+  background: #d3d6d9;
   padding: 1rem;
-  border-radius: 6px;
 }
 </style>

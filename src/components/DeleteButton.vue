@@ -1,8 +1,10 @@
 <script setup>
 import { XCircleIcon } from "@heroicons/vue/24/outline";
+
+const emit = defineEmits(["delete"]);
 </script>
 <template>
-  <button class="delete-button">
+  <button class="delete-button" @click="emit('delete')">
     <XCircleIcon class="delete-button__icon" />
   </button>
 </template>

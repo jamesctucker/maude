@@ -3,6 +3,7 @@ import { ref } from "vue";
 import Card from "./Card.vue";
 import EmptyState from "./EmptyState.vue";
 
+const objId = ref(0);
 const results = ref([]);
 
 chrome.runtime.onMessage.addListener(({ name, data }) => {
@@ -34,16 +35,40 @@ const generateContent = async (command, artifact) => {
     const response = await fetch(url, options);
 
     const data = await response.json();
+    // the object in outputs has a dynamic key, so we need to use bracket notation
+    const output = data?.outputs[Object.keys(data.outputs)[0]];
 
-    console.log("data", data);
+    objId.value++;
+
+    const obj = {
+      id: objId.value,
+      command: command,
+      originalText: artifact,
+      generatedText: output,
+    };
+
+    results.value = [...results.value, obj];
   } catch (error) {
     console.error("Oops, something went wrong", error);
   }
+};
+
+const handleRemove = (id) => {
+  const index = results.value.findIndex((result) => result.id === id);
+  results.value.splice(index, 1);
 };
 </script>
 <template>
   <div class="dashboard">
     <EmptyState v-if="results.length === 0" />
-    <Card v-else />
+    <ul v-else>
+      <Card
+        v-for="result in results"
+        :key="result.id"
+        :result="result"
+        @remove="handleRemove"
+      />
+    </ul>
+    <!-- TODO: add a placeholder card during loading state -->
   </div>
 </template>

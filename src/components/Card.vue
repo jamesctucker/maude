@@ -1,36 +1,44 @@
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import CopyButton from "./CopyButton.vue";
 import DeleteButton from "./DeleteButton.vue";
 import WordCount from "./WordCount.vue";
 import RedoButton from "./RedoButton.vue";
 
-const copy =
-  ref(`This is an example of text. What actions should go on this card? I hope
-        this helps Logan and Claire. Hello world! This is an example of text.
-        What actions should go on this card? I hope this helps Logan and Claire.
-        Hello world! This is an example of text. What actions should go on this
-        card? I hope this helps Logan and Claire. Hello world!`);
+const emit = defineEmits(["remove"]);
+
+const props = defineProps({
+  result: {
+    type: Object,
+    required: true,
+  },
+});
+
+const result = computed(() => props.result);
 </script>
 
 <template>
-  <div class="text-card">
+  <li class="text-card">
     <div class="text-card__inset">
-      <div class="text-card__actions"><DeleteButton /> <CopyButton /></div>
+      <div class="text-card__actions">
+        <DeleteButton @delete="emit('remove')" />
+        <CopyButton />
+      </div>
       <p>
-        {{ copy }}
+        {{ result?.generatedText }}
       </p>
       <div class="text-card__actions">
-        <RedoButton /><WordCount :text="copy" />
+        <RedoButton /><WordCount :text="result?.generatedText" />
       </div>
     </div>
-  </div>
+  </li>
 </template>
 <style scoped lang="scss">
 .text-card {
   text-align: left;
   background: linear-gradient(63deg, #3c51f1 2.88%, #f03742 98.95%);
   padding: 0.75rem;
+  margin-bottom: 1rem;
   position: relative;
 
   &__inset {

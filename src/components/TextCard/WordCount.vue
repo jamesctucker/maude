@@ -18,3 +18,9 @@ const wordCount = computed(() => {
     <p>{{ wordCount }} words</p>
   </div>
 </template>
+
+<style scoped lang="scss">
+.word-count {
+  color: #70747b;
+}
+</style>

@@ -30,17 +30,17 @@ const copy =
 .text-card {
   text-align: left;
   background: linear-gradient(63deg, #3c51f1 2.88%, #f03742 98.95%);
-  padding: 0.5rem;
-  border-radius: 6px;
+  padding: 0.75rem;
   position: relative;
 
   &__inset {
     background: #fff;
-    padding: 1rem;
-    border-radius: 4px;
+    padding: 0.75rem;
+    box-shadow: 4px 5px 8px rgba(0, 0, 0, 0.25);
 
     p {
-      margin: 0.5rem 0;
+      margin: 0;
+      padding: 0.75rem 0;
     }
   }
 

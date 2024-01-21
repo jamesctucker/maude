@@ -14,16 +14,15 @@ const redo = () => {
 .redo-button {
   display: flex;
   align-items: center;
-  border: 0.5px solid black;
-  border-radius: 4px;
+  border: 1px solid #70747b;
   background-color: white;
   color: black;
   padding: 0.25rem 0.5rem;
 
   &__icon {
-    width: 0.75rem;
-    height: 0.75rem;
-    margin-right: 0.25rem;
+    width: 0.85rem;
+    height: 0.85rem;
+    margin-right: 0.45rem;
   }
 
   &:hover {

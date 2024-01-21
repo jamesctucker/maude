@@ -1,13 +1,14 @@
 <template>
   <header>
-    <h1>Maude</h1>
+    <h1>Maude.</h1>
   </header>
 </template>
 <style scoped>
 header {
-  padding: 1.5rem;
+  padding: 1rem;
   text-align: center;
-  background: linear-gradient(63deg, #3c51f1 2.88%, #f03742 98.95%);
-  color: #fff;
+  background: #ffff;
+  color: black;
+  border-bottom: 1px solid #d3d6d9;
 }
 </style>

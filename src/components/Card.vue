@@ -16,6 +16,17 @@ const props = defineProps({
 
 const result = computed(() => props.result);
 
+// lookup table that maps the result.command to a human readable string
+const commandLookup = {
+  generateAltText: "alt text",
+  generateMetaTitle: "meta title",
+  generateMetaDescription: "meta description",
+  summarize: "summary",
+  rephrase: "rephrasing",
+  fixSpellingAndGrammar: "spelling and grammar",
+  improveClarity: "improve clarity",
+};
+
 const handleCopy = () => {
   navigator.clipboard.writeText(result.value.generatedText);
 };
@@ -37,10 +48,12 @@ const handleRedo = () => {
         {{ result?.generatedText }}
       </p>
       <div class="text-card__actions">
-        <RedoButton @redo="handleRedo" /><WordCount
-          :text="result?.generatedText"
-        />
+        <div class="text-card__action-type">
+          {{ commandLookup[result?.command] }}
+        </div>
+        <RedoButton @redo="handleRedo" />
       </div>
+      <!-- <WordCount :text="result?.generatedText" /> -->
     </div>
   </li>
 </template>
@@ -67,6 +80,13 @@ const handleRedo = () => {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  &__action-type {
+    padding: 0.25rem 0.5rem;
+    width: fit-content;
+    background-color: #70747b;
+    color: #fff;
   }
 }
 </style>

@@ -22,5 +22,7 @@ const wordCount = computed(() => {
 <style scoped lang="scss">
 .word-count {
   color: #70747b;
+  text-align: right;
+  margin-top: 0.5rem;
 }
 </style>

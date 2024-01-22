@@ -55,13 +55,6 @@ const listen = () => {
         data: { value: data.selectionText },
       });
     }
-
-    if (data.menuItemId === "continueWriting") {
-      chrome.runtime.sendMessage({
-        name: "continueWriting",
-        data: { value: data.selectionText },
-      });
-    }
   });
 };
 

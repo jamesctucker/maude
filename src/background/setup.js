@@ -52,12 +52,6 @@ const setup = () => {
       title: "Improve clarity",
       contexts: ["selection"],
     });
-
-    chrome.contextMenus.create({
-      id: "continueWriting",
-      title: "Continue writing",
-      contexts: ["selection"],
-    });
   }
 };
 

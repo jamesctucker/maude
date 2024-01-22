@@ -1,8 +1,10 @@
 <script setup>
 import { ClipboardDocumentIcon } from "@heroicons/vue/24/outline";
+
+const emit = defineEmits(["copy"]);
 </script>
 <template>
-  <button class="copy-button">
+  <button class="copy-button" @click="emit('copy')">
     <ClipboardDocumentIcon class="copy-button__icon" />
   </button>
 </template>

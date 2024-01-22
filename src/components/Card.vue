@@ -15,6 +15,10 @@ const props = defineProps({
 });
 
 const result = computed(() => props.result);
+
+const handleCopy = () => {
+  navigator.clipboard.writeText(result.value.generatedText);
+};
 </script>
 
 <template>
@@ -22,7 +26,7 @@ const result = computed(() => props.result);
     <div class="text-card__inset">
       <div class="text-card__actions">
         <DeleteButton @delete="emit('remove')" />
-        <CopyButton />
+        <CopyButton @copy="handleCopy" />
       </div>
       <p>
         {{ result?.generatedText }}

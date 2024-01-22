@@ -11,6 +11,12 @@ const setup = () => {
     });
 
     chrome.contextMenus.create({
+      id: "generateBulkAltText",
+      title: "Generate bulk alt text",
+      contexts: ["page"],
+    });
+
+    chrome.contextMenus.create({
       id: "generateMetaTitle",
       title: "Generate meta title",
       contexts: ["selection"],

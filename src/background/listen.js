@@ -7,6 +7,13 @@ const listen = () => {
       });
     }
 
+    if (data.menuItemId === "generateBulkAltText") {
+      chrome.runtime.sendMessage({
+        name: "generateBulkAltText",
+        data: { value: data.srcUrl },
+      });
+    }
+
     if (data.menuItemId === "generateMetaTitle") {
       chrome.runtime.sendMessage({
         name: "generateMetaTitle",

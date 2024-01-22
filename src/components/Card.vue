@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import CopyButton from "./CopyButton.vue";
 import DeleteButton from "./DeleteButton.vue";
 import WordCount from "./WordCount.vue";

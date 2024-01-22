@@ -22,7 +22,7 @@ const emit = defineEmits(["delete"]);
 
   &:hover {
     cursor: pointer;
-    scale: 1.05;
+    scale: 1.1;
   }
 }
 </style>

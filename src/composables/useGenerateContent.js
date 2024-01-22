@@ -1,13 +1,79 @@
 import { ref } from "vue";
 
 export function useGenerateContent() {
-  const results = ref([]);
+  const results = ref([
+    // generate mock data
+    {
+      id: 1,
+      command: "generateAltText",
+      originalText:
+        "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
+      generatedText:
+        "A picture containing text, drawing Description automatically generated",
+    },
+    {
+      id: 2,
+      command: "generateMetaTitle",
+      originalText: "This is a test",
+      generatedText: "This is a test",
+    },
+    {
+      id: 3,
+      command: "generateMetaTitle",
+      originalText: "This is a test",
+      generatedText: "This is a test",
+    },
+    {
+      id: 4,
+      command: "generateMetaTitle",
+      originalText: "This is a test",
+      generatedText: "This is a test",
+    },
+    {
+      id: 5,
+      command: "generateMetaTitle",
+      originalText: "This is a test",
+      generatedText: "This is a test",
+    },
+    {
+      id: 6,
+      command: "generateMetaTitle",
+      originalText: "This is a test",
+      generatedText: "This is a test",
+    },
+    {
+      id: 7,
+      command: "generateMetaTitle",
+      originalText: "This is a test",
+      generatedText: "This is a test",
+    },
+    {
+      id: 8,
+      command: "generateMetaTitle",
+      originalText: "This is a test",
+      generatedText: "This is a test",
+    },
+    {
+      id: 9,
+      command: "generateMetaTitle",
+      originalText: "This is a test",
+      generatedText: "This is a test",
+    },
+    {
+      id: 10,
+      command: "generateMetaTitle",
+      originalText: "This is a test",
+      generatedText: "This is a test",
+    },
+  ]);
   const loading = ref(false);
   const error = ref(null);
   const objId = ref(0);
 
   const mutate = async (command, artifact) => {
     try {
+      loading.value = true;
+
       const url = "https://api.respell.ai/v1/run";
 
       const payload = {
@@ -43,21 +109,33 @@ export function useGenerateContent() {
       };
 
       results.value = [...results.value, obj];
+      loading.value = false;
     } catch (error) {
       console.error("Oops, something went wrong", error);
+      error.value = error.message;
+      loading.value = false;
     }
   };
 
   const remove = (id) => {
+    loading.value = true;
+
     const index = results.value.findIndex((result) => result.id === id);
     results.value.splice(index, 1);
+
+    loading.value = false;
   };
 
   const redo = async (id) => {
+    loading.value = true;
+
     const index = results.value.findIndex((result) => result.id === id);
     const result = results.value[index];
+
     await mutate(result.command, result.generatedText);
     remove(id);
+
+    loading.value = false;
   };
 
   return { results, loading, error, mutate, remove, redo };

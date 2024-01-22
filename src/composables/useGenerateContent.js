@@ -1,71 +1,72 @@
 import { ref } from "vue";
 
+const mockData = [
+  {
+    id: 1,
+    command: "generateAltText",
+    originalText:
+      "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
+    generatedText:
+      "A picture containing text, drawing Description automatically generated",
+  },
+  {
+    id: 2,
+    command: "generateMetaTitle",
+    originalText: "This is a test",
+    generatedText: "This is a test",
+  },
+  {
+    id: 3,
+    command: "generateMetaTitle",
+    originalText: "This is a test",
+    generatedText: "This is a test",
+  },
+  {
+    id: 4,
+    command: "generateMetaTitle",
+    originalText: "This is a test",
+    generatedText: "This is a test",
+  },
+  {
+    id: 5,
+    command: "generateMetaTitle",
+    originalText: "This is a test",
+    generatedText: "This is a test",
+  },
+  {
+    id: 6,
+    command: "generateMetaTitle",
+    originalText: "This is a test",
+    generatedText: "This is a test",
+  },
+  {
+    id: 7,
+    command: "generateMetaTitle",
+    originalText: "This is a test",
+    generatedText: "This is a test",
+  },
+  {
+    id: 8,
+    command: "generateMetaTitle",
+    originalText: "This is a test",
+    generatedText: "This is a test",
+  },
+  {
+    id: 9,
+    command: "generateMetaTitle",
+    originalText: "This is a test",
+    generatedText: "This is a test",
+  },
+  {
+    id: 10,
+    command: "generateMetaTitle",
+    originalText: "This is a test",
+    generatedText: "This is a test",
+  },
+];
+
 export function useGenerateContent() {
-  const results = ref([
-    // generate mock data
-    {
-      id: 1,
-      command: "generateAltText",
-      originalText:
-        "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
-      generatedText:
-        "A picture containing text, drawing Description automatically generated",
-    },
-    {
-      id: 2,
-      command: "generateMetaTitle",
-      originalText: "This is a test",
-      generatedText: "This is a test",
-    },
-    {
-      id: 3,
-      command: "generateMetaTitle",
-      originalText: "This is a test",
-      generatedText: "This is a test",
-    },
-    {
-      id: 4,
-      command: "generateMetaTitle",
-      originalText: "This is a test",
-      generatedText: "This is a test",
-    },
-    {
-      id: 5,
-      command: "generateMetaTitle",
-      originalText: "This is a test",
-      generatedText: "This is a test",
-    },
-    {
-      id: 6,
-      command: "generateMetaTitle",
-      originalText: "This is a test",
-      generatedText: "This is a test",
-    },
-    {
-      id: 7,
-      command: "generateMetaTitle",
-      originalText: "This is a test",
-      generatedText: "This is a test",
-    },
-    {
-      id: 8,
-      command: "generateMetaTitle",
-      originalText: "This is a test",
-      generatedText: "This is a test",
-    },
-    {
-      id: 9,
-      command: "generateMetaTitle",
-      originalText: "This is a test",
-      generatedText: "This is a test",
-    },
-    {
-      id: 10,
-      command: "generateMetaTitle",
-      originalText: "This is a test",
-      generatedText: "This is a test",
-    },
-  ]);
+  const results = ref([]);
   const loading = ref(false);
   const error = ref(null);
   const objId = ref(0);

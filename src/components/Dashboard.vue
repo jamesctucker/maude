@@ -44,7 +44,7 @@ chrome.runtime.onMessage.addListener(async ({ name, data }) => {
     <div v-if="error" class="dashboard__error">
       <ErrorAlert />
     </div>
-    <ul v-if="results.length > 0">
+    <ul v-if="results.length > 0" v-auto-animate>
       <Card
         v-for="result in results"
         :key="result.id"
@@ -60,7 +60,6 @@ chrome.runtime.onMessage.addListener(async ({ name, data }) => {
 </template>
 <style scoped lang="scss">
 .dashboard {
-  padding: 1rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

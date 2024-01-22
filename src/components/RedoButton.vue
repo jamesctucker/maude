@@ -1,11 +1,10 @@
 <script setup>
 import { ArrowPathIcon } from "@heroicons/vue/24/outline";
-const redo = () => {
-  console.log("Redo");
-};
+
+const emit = defineEmits(["redo"]);
 </script>
 <template>
-  <button class="redo-button" @click="redo">
+  <button class="redo-button" @click="emit('redo')">
     <ArrowPathIcon class="redo-button__icon" />
     Redo
   </button>

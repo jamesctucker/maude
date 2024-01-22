@@ -5,7 +5,7 @@ import DeleteButton from "./DeleteButton.vue";
 import WordCount from "./WordCount.vue";
 import RedoButton from "./RedoButton.vue";
 
-const emit = defineEmits(["remove"]);
+const emit = defineEmits(["remove", "redo"]);
 
 const props = defineProps({
   result: {
@@ -18,6 +18,11 @@ const result = computed(() => props.result);
 
 const handleCopy = () => {
   navigator.clipboard.writeText(result.value.generatedText);
+};
+
+const handleRedo = () => {
+  // TODO: will need to update the logic to replace the original text with the generated text
+  emit("redo");
 };
 </script>
 
@@ -32,7 +37,9 @@ const handleCopy = () => {
         {{ result?.generatedText }}
       </p>
       <div class="text-card__actions">
-        <RedoButton /><WordCount :text="result?.generatedText" />
+        <RedoButton @redo="handleRedo" /><WordCount
+          :text="result?.generatedText"
+        />
       </div>
     </div>
   </li>

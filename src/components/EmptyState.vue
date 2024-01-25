@@ -8,6 +8,5 @@
   text-align: center;
   background: #d3d6d9;
   padding: 1rem;
-  width: 100%;
 }
 </style>

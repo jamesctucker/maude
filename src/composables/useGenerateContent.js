@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 const mockData = [
   {
@@ -70,6 +70,7 @@ export function useGenerateContent() {
   const loading = ref(false);
   const error = ref(null);
   const objId = ref(0);
+  const authToken = "Bearer test_key";
 
   const mutate = async (command, artifact) => {
     try {
@@ -89,7 +90,7 @@ export function useGenerateContent() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          authorization: "Bearer bff94e46-b5d9-4779-9489-2c5955ea5208",
+          authorization: authToken,
         },
         body: JSON.stringify(payload),
       };
@@ -138,6 +139,15 @@ export function useGenerateContent() {
 
     loading.value = false;
   };
+
+  // watch error, if it becomes true, set a timeout to reset it to null after 3.5 seconds
+  watch(error, (value) => {
+    if (value) {
+      setTimeout(() => {
+        error.value = null;
+      }, 3500);
+    }
+  });
 
   return { results, loading, error, mutate, remove, redo };
 }

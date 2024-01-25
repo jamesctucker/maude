@@ -44,7 +44,7 @@ chrome.runtime.onMessage.addListener(async ({ name, data }) => {
     <div v-if="error" class="dashboard__error">
       <ErrorAlert />
     </div>
-    <ul v-if="results.length > 0" v-auto-animate>
+    <ul class="dashboard__list" v-if="results.length > 0" v-auto-animate>
       <Card
         v-for="result in results"
         :key="result.id"
@@ -61,9 +61,11 @@ chrome.runtime.onMessage.addListener(async ({ name, data }) => {
 <style scoped lang="scss">
 .dashboard {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
 
   &__loading {
     position: fixed;
@@ -77,6 +79,7 @@ chrome.runtime.onMessage.addListener(async ({ name, data }) => {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 3;
   }
 
   &__loading-spinner {
@@ -100,8 +103,11 @@ chrome.runtime.onMessage.addListener(async ({ name, data }) => {
 
   &__error {
     position: fixed;
-    bottom: 0;
-    margin-bottom: 1rem;
+    top: 75px;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    z-index: 2;
   }
 }
 </style>

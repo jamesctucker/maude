@@ -2,7 +2,6 @@
 import { computed } from "vue";
 import CopyButton from "./CopyButton.vue";
 import DeleteButton from "./DeleteButton.vue";
-import WordCount from "./WordCount.vue";
 import RedoButton from "./RedoButton.vue";
 
 const emit = defineEmits(["remove", "redo"]);
@@ -53,7 +52,6 @@ const handleRedo = () => {
         </div>
         <RedoButton @redo="handleRedo" />
       </div>
-      <!-- <WordCount :text="result?.generatedText" /> -->
     </div>
   </li>
 </template>
